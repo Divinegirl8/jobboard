@@ -8,7 +8,7 @@ class Job(models.Model):
     description = models.TextField()
     company_name = models.CharField(max_length=100)
     requirements = models.TextField()
-    salary = models.BigIntegerField()
+    salary = models.CharField(max_length=250)
     location = models.ForeignKey('Location', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -17,7 +17,7 @@ class Job(models.Model):
 
 class Location(models.Model):
     country = models.CharField(max_length=150)
-    state = models.CharField(max_length=200)
+    state = models.CharField(max_length=200,null=True,blank=True)
 
     def __str__(self):
         return f'{self.country} {self.state}'
